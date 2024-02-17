@@ -11,7 +11,6 @@ import static io.restassured.filter.log.LogDetail.STATUS;
 import static io.restassured.http.ContentType.JSON;
 
 public class Specifications {
-    static String loginEndPoint = "/Account/v1/Login";
 
     public static ResponseSpecification loginResponse = new ResponseSpecBuilder()
             .expectStatusCode(200)

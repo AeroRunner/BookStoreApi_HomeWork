@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
@@ -50,7 +51,8 @@ public class DeleteBookFromProfileTest extends BaseTest {
         );
 
         step("Let's check that book has been deleted",  ()->
-                $(".ReactTable").shouldNotHave(text("Git Pocket Guide"))
+                $(".rt-noData").shouldBe(visible)
+                        .shouldHave(text("No rows found"))
         );
     }
 }

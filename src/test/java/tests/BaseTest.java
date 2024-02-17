@@ -24,11 +24,11 @@ public class BaseTest {
         Configuration.baseUrl = "https://demoqa.com";
         RestAssured.baseURI = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.browser = config.browserName();
+        Configuration.browser = config.setBrowser();
         Configuration.browserVersion = config.browserVersion();
-        Configuration.browserSize = config.browserSize();
+        Configuration.browserSize = config.setBrowserSize();
         if (config.isRemote() == true) {
-            Configuration.remote = config.remoteUrl();
+            Configuration.remote = config.setRemoteUrl();
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                     "enableVNC", true,
