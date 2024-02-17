@@ -10,7 +10,7 @@ public interface BrowserDriverConfig extends Config {
     @Key("version")
     @DefaultValue("100")
     String browserVersion();
-    @Key("remote")
+    @Key("remoteWebDriver")
     @DefaultValue("https://user1:1234@selenoid.autotests.cloud/wd/hub/")
     String remoteWebDriver();
     @Key("browserSize")
