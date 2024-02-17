@@ -5,14 +5,17 @@ import org.aeonbits.owner.Config;
 @Config.Sources({"classpath:config/${host}.properties"})
 public interface BrowserDriverConfig extends Config {
     @Key("browser")
-    @DefaultValue("FIREFOX")
-    String getBrowserName();
+    @DefaultValue("CHROME")
+    String browserName();
     @Key("version")
-    @DefaultValue("98")
-    String getBrowserVersion();
+    @DefaultValue("100")
+    String browserVersion();
     @Key("remote")
     @DefaultValue("https://user1:1234@selenoid.autotests.cloud/wd/hub/")
-    String getRemoteWebDriver();
+    String remoteWebDriver();
+    @Key("browserSize")
+    @DefaultValue("1920x1080")
+    String browserSize();
 
     @Key("isRemote")
     @DefaultValue("false")

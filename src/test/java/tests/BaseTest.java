@@ -24,10 +24,11 @@ public class BaseTest {
         Configuration.baseUrl = "https://demoqa.com";
         RestAssured.baseURI = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.browser = config.getBrowserName();
-        Configuration.browserVersion = config.getBrowserVersion();
+        Configuration.browser = config.browserName();
+        Configuration.browserVersion = config.browserVersion();
+        Configuration.browserSize = config.browserSize();
         if (config.isRemote() != null) {
-            Configuration.remote = config.getRemoteWebDriver();
+            Configuration.remote = config.remoteWebDriver();
         }
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(

@@ -31,13 +31,13 @@ public class DeleteBookFromProfileTest extends BaseTest {
         step("Open Profile",  ()->
                 open("/profile")
         );
+        step("Accept cookies", ()-> {
+            $("button.fc-cta-consent").click();
+        });
 
         step("Click trash icon ",  ()-> {
             executeJavaScript("$('.fc-dialog-container').remove()");
             $("#delete-record-undefined").click();
-        });
-        step("Accept cookies", ()-> {
-            $("button.fc-cta-consent").click();
         });
 
         step("Agree with the removal of book",  ()->
