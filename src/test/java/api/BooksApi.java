@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.given;
 import static specification.Specifications.*;
 
 public class BooksApi {
-    public static void deleteAllBooks (String token, String userId) {
+    public static void deleteAllBooks(String token, String userId) {
         given(testRequest)
                 .header("Authorization", "Bearer " + token)
                 .queryParam("UserId", userId)
@@ -21,10 +21,10 @@ public class BooksApi {
                 .spec(deleteAllBooksResponse);
     }
 
-    public static AddBookResponseModel addBooks (String token, String userId) {
+    public static AddBookResponseModel addBooks(String token, String userId) {
         ArrayList books = new ArrayList<>();
         books.add(new IsbnBookModel("9781449325862"));
-        AddBookRequestModel dataBook= new AddBookRequestModel();
+        AddBookRequestModel dataBook = new AddBookRequestModel();
         dataBook.setCollectionOfIsbns(books);
         dataBook.setUserId(userId);
 
