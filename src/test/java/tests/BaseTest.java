@@ -28,7 +28,7 @@ public class BaseTest {
         Configuration.browserVersion = config.browserVersion();
         Configuration.browserSize = config.browserSize();
         if (config.isRemote() == true) {
-            Configuration.remote = config.remoteWebDriver();
+            Configuration.remote = config.remoteUrl();
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                     "enableVNC", true,
