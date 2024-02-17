@@ -13,7 +13,6 @@ import static io.qameta.allure.Allure.step;
 
 public class DeleteBookFromProfileTest extends BaseTest {
     @Test
-    @Tag("DeleteBookTest")
     @WithSession
     void deleteBookFromProfileTest () {
         LoginResponseModel authResponse = step("Add Authorization Request", ()->
@@ -27,18 +26,24 @@ public class DeleteBookFromProfileTest extends BaseTest {
         step("Add new book to Profile", ()->
                 BooksApi.addBooks(authResponse.getToken(), authResponse.getUserId())
         );
+        step("Accept cookies", () -> {
+            if ($(".fc-consent-root").isDisplayed()){
+                $("button.fc-cta-consent").click();
+            }});
 
         step("Open Profile",  ()->
                 open("/profile")
         );
-        step("Accept cookies", ()-> {
-            $("button.fc-cta-consent").click();
+        step("Accept cookies", () -> {
+            if ($(".fc-consent-root").isDisplayed()){
+                $("button.fc-cta-consent").click();
+            }
         });
-
         step("Click trash icon ",  ()-> {
             executeJavaScript("$('.fc-dialog-container').remove()");
             $("#delete-record-undefined").click();
         });
+
 
         step("Agree with the removal of book",  ()->
                 $("#closeSmallModal-ok").click()

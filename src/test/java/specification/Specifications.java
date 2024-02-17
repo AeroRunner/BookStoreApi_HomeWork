@@ -12,27 +12,20 @@ import static io.restassured.http.ContentType.JSON;
 
 public class Specifications {
     static String loginEndPoint = "/Account/v1/Login";
-    static String booksEndPoint = "/BookStore/v1/Books";
-    public static RequestSpecification loginRequest = with()
-            .filter(withCustomTemplates())
-            .log().uri()
-            .log().body()
-            .log().headers()
-            .contentType(JSON)
-            .basePath(loginEndPoint);
+
     public static ResponseSpecification loginResponse = new ResponseSpecBuilder()
             .expectStatusCode(200)
             .log(STATUS)
             .log(BODY)
             .build();
 
-    public static RequestSpecification booksRequest = with()
+    public static RequestSpecification testRequest = with()
             .filter(withCustomTemplates())
             .log().uri()
             .log().body()
             .log().headers()
-            .contentType(JSON)
-            .basePath(booksEndPoint);
+            .contentType(JSON);
+
     public static ResponseSpecification deleteAllBooksResponse = new ResponseSpecBuilder()
             .expectStatusCode(204)
             .log(STATUS)

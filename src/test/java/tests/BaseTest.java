@@ -27,15 +27,15 @@ public class BaseTest {
         Configuration.browser = config.browserName();
         Configuration.browserVersion = config.browserVersion();
         Configuration.browserSize = config.browserSize();
-        if (config.isRemote() != null) {
+        if (config.isRemote() == true) {
             Configuration.remote = config.remoteWebDriver();
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                    "enableVNC", true,
+                    "enableVideo", true
+            ));
+            Configuration.browserCapabilities = capabilities;
         }
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
-        Configuration.browserCapabilities = capabilities;
     }
 
     @BeforeEach

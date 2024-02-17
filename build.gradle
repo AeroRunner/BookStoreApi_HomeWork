@@ -16,7 +16,7 @@ repositories {
     mavenCentral()
 }
 
-def allureVersion = "2.21.0"
+def allureVersion = "2.24.0"
 
 
 
@@ -57,8 +57,4 @@ tasks.withType(Test) {
         }
     }
 }
-task delete_book(type: Test) {
-    useJUnitPlatform {
-        includeTags("DeleteBookTest")
-    }
-}
+

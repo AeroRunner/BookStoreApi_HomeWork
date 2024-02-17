@@ -11,11 +11,11 @@ import static specification.Specifications.*;
 
 public class BooksApi {
     public static void deleteAllBooks (String token, String userId) {
-        given(booksRequest)
+        given(testRequest)
                 .header("Authorization", "Bearer " + token)
                 .queryParam("UserId", userId)
                 .when()
-                .delete()
+                .delete("/BookStore/v1/Books")
                 .then()
                 .log().all()
                 .spec(deleteAllBooksResponse);
@@ -28,11 +28,11 @@ public class BooksApi {
         dataBook.setCollectionOfIsbns(books);
         dataBook.setUserId(userId);
 
-        return given(booksRequest)
+        return given(testRequest)
                 .header("Authorization", "Bearer " + token)
                 .body(dataBook)
                 .when()
-                .post()
+                .post("/BookStore/v1/Books")
                 .then()
                 .log().all()
                 .spec(addBooksResponse)

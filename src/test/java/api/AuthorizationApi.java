@@ -13,10 +13,10 @@ public class AuthorizationApi {
         userData.setPassword("Rock2025lan!");
 
         return
-                given(loginRequest)
+                given(testRequest)
                         .body(userData)
                         .when()
-                        .post()
+                        .post("/Account/v1/Login")
                         .then()
                         .log().all()
                         .spec(loginResponse)
