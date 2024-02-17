@@ -52,6 +52,7 @@ public class DeleteBookFromProfileTest extends BaseTest {
         );
 
         step("Let's check that book has been deleted", () ->
+
                 $(".rt-noData").shouldBe(visible).shouldHave(text("No rows found"))
         );
     }
