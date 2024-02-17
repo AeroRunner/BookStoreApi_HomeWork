@@ -45,10 +45,13 @@ public class BaseTest {
 
     @AfterEach
     void afterEach() {
+        BrowserDriverConfig config = ConfigFactory.create(BrowserDriverConfig.class, System.getProperties());
         Attach.screenshotAs("LastScreenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
-        Attach.addVideo();
+        if (config.isRemote() ==true){
+            Attach.addVideo();
+        };
         closeWebDriver();
     }
 }
