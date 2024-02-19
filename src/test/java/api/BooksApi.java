@@ -21,9 +21,9 @@ public class BooksApi {
                 .spec(deleteAllBooksResponse);
     }
 
-    public static AddBookResponseModel addBooks(String token, String userId) {
+    public static AddBookResponseModel addBooks(String token, String userId, String isbn) {
         ArrayList books = new ArrayList<>();
-        books.add(new IsbnBookModel("9781449325862"));
+        books.add(new IsbnBookModel(isbn));
         AddBookRequestModel dataBook = new AddBookRequestModel();
         dataBook.setCollectionOfIsbns(books);
         dataBook.setUserId(userId);

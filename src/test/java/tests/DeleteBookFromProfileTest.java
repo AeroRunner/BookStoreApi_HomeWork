@@ -3,6 +3,7 @@ package tests;
 import api.AuthorizationApi;
 import api.BooksApi;
 import helpers.WithSession;
+import models.AddBookRequestModel;
 import models.IsbnBookModel;
 import models.LoginResponseModel;
 import org.junit.jupiter.api.Tag;
@@ -19,6 +20,7 @@ public class DeleteBookFromProfileTest extends BaseTest {
     @Test
     @WithSession
     void deleteBookFromProfileTest() {
+        AddBookRequestModel bookModel = new AddBookRequestModel();
         LoginResponseModel authResponse = step("Add Authorization Request", () ->
                 AuthorizationApi.authResponse()
         );
@@ -29,7 +31,7 @@ public class DeleteBookFromProfileTest extends BaseTest {
 
         step("Add new book to Profile", () ->
 
-                BooksApi.addBooks(authResponse.getToken(), authResponse.getUserId())
+                BooksApi.addBooks(authResponse.getToken(), authResponse.getUserId(),"9781449325862")
         );
         step("Accept cookies", () -> {
             if ($(".fc-consent-root").isDisplayed()) {

@@ -49,7 +49,7 @@ public class BaseTest {
         Attach.screenshotAs("LastScreenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
-        if (config.isRemote() ==true){
+        if (config.isRemote() == true){
             Attach.addVideo();
         };
         closeWebDriver();
